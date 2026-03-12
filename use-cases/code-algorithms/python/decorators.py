@@ -2,7 +2,6 @@ import functools
 import time
 
 def timer_decorator(func):
-    """Decorator to measure execution time of a function"""
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
         start_time = time.time()
@@ -14,5 +13,5 @@ def timer_decorator(func):
 
 @timer_decorator
 def complex_data_process():
-    time.sleep(1)  # Simulating a heavy task
+    time.sleep(1)
     return "Process Complete"

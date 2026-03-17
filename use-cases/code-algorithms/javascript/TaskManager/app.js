@@ -150,4 +150,25 @@ class TaskManager {
   }
 }
 
+markAbandonedTasks() {
+    const tasks = this.storage.getAllTasks();
+    const now = new Date();
+
+    tasks.forEach(task => {
+      if (task.dueDate && task.status !== TaskStatus.DONE) {
+        const daysOverdue = Math.floor(
+          (now - task.dueDate) / (1000 * 60 * 60 * 24)
+        );
+        const isHighPriority =
+          task.priority === TaskPriority.HIGH ||
+          task.priority === TaskPriority.URGENT;
+
+        if (daysOverdue > 7 && !isHighPriority) {
+          task.status = TaskStatus.ABANDONED;
+        }
+      }
+    });
+    this.storage.save();
+  }
+
 module.exports = { TaskManager };

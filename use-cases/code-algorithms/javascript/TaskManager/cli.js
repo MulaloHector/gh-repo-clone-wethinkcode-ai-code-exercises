@@ -176,6 +176,62 @@ program
     console.log(`Completed in last 7 days: ${stats.completedLastWeek}`);
   });
 
+[15:14, 17/03/2026] Owen: program
+  .command('cleanup')
+  .description('Mark overdue tasks (7+ days) as abandoned')
+  .action(() => {
+    taskManager.markAbandonedTasks();
+    console.log('Done. Tasks overdue by 7+ days have been marked as abandoned.');
+  });
+
+5. Scroll down → **"Commit changes"**
+
+---
+
+### STEP 6 — Create a Pull Request
+1. Click the **"Pull requests"** tab at the top
+2. Click **"New pull request"**
+3. Set **base:** `main` ← **compare:** `exercise/codebase-exploration`
+4. Click **"Create pull request"**
+5. Title it: `Exercise: Codebase Exploration & Abandoned Task Rule`
+6. In the description paste:
+
+## What's in this PR
+- exercise-findings.md — full codebase analysis findings
+- models.js — added ABANDONED task status
+- app.js — added markAbandonedTasks() business rule
+- …
+[15:16, 17/03/2026] Owen: program
+  .command('cleanup')
+  .description('Mark overdue tasks (7+ days) as abandoned')
+  .action(() => {
+    taskManager.markAbandonedTasks();
+    console.log('Done. Tasks overdue by 7+ days have been marked as abandoned.');
+  });
+
+5. Scroll down → **"Commit changes"**
+
+---
+
+### STEP 6 — Create a Pull Request
+1. Click the **"Pull requests"** tab at the top
+2. Click **"New pull request"**
+3. Set **base:** `main` ← **compare:** `exercise/codebase-exploration`
+4. Click **"Create pull request"**
+5. Title it: `Exercise: Codebase Exploration & Abandoned Task Rule`
+6. In the description paste:
+
+## What's in this PR
+- exercise-findings.md — full codebase analysis findings
+- models.js — added ABANDONED task status
+- app.js — added markAbandonedTasks() business rule
+- cli.js — added cleanup command
+
+## Business Rule Implemented
+Tasks overdue by more than 7 days are automatically marked
+as ABANDONED, unless they are HIGH or URGENT priority.
+
+
 program.parse(process.argv);
 
 // If no arguments, show help
